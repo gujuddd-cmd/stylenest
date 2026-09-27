@@ -6,51 +6,77 @@
 <title>StyleNest - Men, Women & Kids Fashion</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f6f6f6;color:#171717}
+body{font-family:Arial,sans-serif;background:#f5f5f5;color:#171717}
 header{background:#111;color:#fff;padding:14px 18px;position:sticky;top:0;z-index:10}
-.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.top{display:flex;justify-content:space-between;align-items:center}
 .logo{font-size:25px;font-weight:800}
 .cart{background:#fff;color:#111;border:0;border-radius:22px;padding:10px 15px;font-weight:700}
-.search{margin-top:12px;width:100%;padding:13px 15px;border:0;border-radius:12px;font-size:16px}
-.hero{margin:18px;background:#111;color:#fff;border-radius:22px;padding:28px 24px}
-.hero h1{font-size:30px;margin-bottom:10px}.hero p{color:#ddd;margin-bottom:18px}
+.search{margin-top:12px;width:100%;padding:13px 15px;border:0;border-radius:14px;font-size:16px}
+.hero{margin:18px;background:#111;color:#fff;border-radius:22px;padding:34px 30px}
+.hero h1{font-size:30px;margin-bottom:10px}.hero p{color:#ddd;margin-bottom:20px;font-size:18px}
 .btn{background:#fff;color:#111;border:0;border-radius:12px;padding:12px 18px;font-weight:700}
-section{padding:8px 18px 18px}h2{font-size:22px;margin-bottom:14px}
+section{padding:8px 18px 20px}
+h2{margin:10px 0 16px}
 .categories{display:flex;gap:10px;overflow:auto}
-.cat{min-width:95px;background:#fff;border:0;border-radius:14px;padding:15px;text-align:center;font-weight:700;box-shadow:0 2px 8px #ddd}
-.cat span{display:block;font-size:28px;margin-bottom:6px}
-.cat.active{background:#111;color:#fff}
+.cat{min-width:95px;background:#fff;border:0;border-radius:14px;padding:12px 10px;font-weight:700;font-size:17px}
+.cat span{display:block;font-size:28px;margin-bottom:5px}.cat.active{background:#111;color:#fff}
 .products{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .card{background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 2px 8px #ddd}
 .pic{width:100%;height:190px;object-fit:cover;background:#eee}
-.info{padding:12px}.name{font-weight:700;margin-bottom:7px}.price{font-size:18px;font-weight:800}
-.old{font-size:13px;color:#888;text-decoration:line-through;margin-left:6px}
-.tag{font-size:11px;background:#eee;border-radius:7px;padding:4px 7px;display:inline-block;margin-bottom:7px}
-.add{width:100%;margin-top:10px;padding:11px;border:0;border-radius:10px;background:#111;color:#fff;font-weight:700}
-footer{text-align:center;padding:25px 15px;color:#777;font-size:13px}
-@media(min-width:700px){.products{grid-template-columns:repeat(4,1fr)}.hero{max-width:900px;margin:18px auto}section{max-width:1000px;margin:auto}}
+.info{padding:12px}.name{font-weight:700;margin-bottom:7px}.price{font-size:18px;font-weight:800}.old{font-size:13px;color:#888;text-decoration:line-through;margin-left:6px}
+.tag{display:inline-block;font-size:11px;background:#eee;border-radius:7px;padding:5px 8px;margin-bottom:8px}
+.add{width:100%;margin-top:10px;padding:11px;border:0;border-radius:12px;background:#111;color:#fff;font-weight:700}
+footer{text-align:center;padding:25px;color:#777}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:30}
+.modal-box{background:#fff;width:94%;max-width:520px;max-height:90vh;overflow:auto;margin:5vh auto;border-radius:18px;padding:20px}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.close{border:0;background:#eee;border-radius:50%;width:36px;height:36px;font-size:20px}
+.cart-item{display:flex;gap:10px;border-bottom:1px solid #ddd;padding:12px 0}
+.cart-item img{width:70px;height:70px;object-fit:cover;border-radius:10px}
+.item-main{flex:1}.qty{display:flex;align-items:center;gap:8px;margin-top:8px}
+.qty button{width:30px;height:30px;border:0;border-radius:8px;background:#111;color:#fff}
+.total{font-size:20px;font-weight:800;text-align:right;padding:15px 0}
+.form input,.form textarea{width:100%;padding:12px;margin:7px 0;border:1px solid #ccc;border-radius:10px;font-size:15px}
+.checkout{width:100%;padding:13px;border:0;border-radius:12px;background:#111;color:#fff;font-weight:700;margin-top:8px}
+.empty{text-align:center;padding:30px;color:#777}
+@media(min-width:700px){.products{grid-template-columns:repeat(4,1fr)}}
 </style>
 </head>
 <body>
 <header>
-<div class="top"><div class="logo">StyleNest</div><button class="cart">🛒 Cart (<span id="count">0</span>)</button></div>
-<input class="search" id="search" placeholder="Search clothes..." oninput="searchProducts()">
+<div class="top"><div class="logo">StyleNest</div><button class="cart" onclick="openCart()">🛒 Cart (<span id="count">0</span>)</button></div>
+<input class="search" id="search" placeholder="Search clothes..." oninput="filter()">
 </header>
 
-<div class="hero"><h1>Style that feels like you.</h1><p>Fashion for Men, Women & Kids.</p><button class="btn" onclick="document.getElementById('shop').scrollIntoView()">Shop Now →</button></div>
+<div class="hero"><h1>Style that feels like you.</h1><p>Fashion for Men, Women & Kids.</p><button class="btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Now →</button></div>
 
-<section>
+<section id="shop">
 <h2>Shop by Category</h2>
 <div class="categories">
-<button class="cat active" data-cat="All" onclick="setCategory('All',this)">🛍️<span>All</span></button>
-<button class="cat" data-cat="Men" onclick="setCategory('Men',this)">👕<span>Men</span></button>
-<button class="cat" data-cat="Women" onclick="setCategory('Women',this)">👗<span>Women</span></button>
-<button class="cat" data-cat="Kids" onclick="setCategory('Kids',this)">🧒<span>Kids</span></button>
+<button class="cat active" onclick="setCategory('All',this)">🛍️<span>All</span></button>
+<button class="cat" onclick="setCategory('Men',this)">👕<span>Men</span></button>
+<button class="cat" onclick="setCategory('Women',this)">👗<span>Women</span></button>
+<button class="cat" onclick="setCategory('Kids',this)">👦<span>Kids</span></button>
 </div>
+<h2 id="title" style="margin-top:28px">All Products</h2>
+<div class="products" id="products"></div>
 </section>
-
-<section id="shop"><h2 id="title">All Products</h2><div class="products" id="products"></div></section>
 <footer>© 2026 StyleNest • Fashion for everyone</footer>
+
+<div class="modal" id="cartModal">
+<div class="modal-box">
+<div class="modal-head"><h2>Your Cart</h2><button class="close" onclick="closeCart()">×</button></div>
+<div id="cartItems"></div>
+<div class="total">Total: ₹<span id="total">0</span></div>
+<div class="form">
+<h3>Checkout Details</h3>
+<input id="custName" placeholder="Your Name">
+<input id="custPhone" placeholder="Phone Number" inputmode="tel">
+<textarea id="custAddress" rows="3" placeholder="Delivery Address"></textarea>
+<button class="checkout" onclick="placeOrder()">Place Order</button>
+</div>
+</div>
+</div>
 
 <script>
 const products=[
@@ -67,28 +93,46 @@ const products=[
 {name:"Kids Dress",cat:"Kids",price:649,old:849,img:"https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80"},
 {name:"Kids Jacket",cat:"Kids",price:799,old:999,img:"https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=800&q=80"}
 ];
-let category="All";
+let category="All",cart=[];
+
 function render(list){
-document.getElementById("products").innerHTML=list.map(p=>`
-<div class="card"><img class="pic" src="${p.img}" alt="${p.name}">
-<div class="info"><span class="tag">${p.cat}</span><div class="name">${p.name}</div>
-<div class="price">₹${p.price}<span class="old">₹${p.old}</span></div>
-<button class="add" onclick="addCart()">Add to Cart</button></div></div>`).join("");
+ const box=document.getElementById("products");
+ box.innerHTML=list.length?list.map((p,i)=>`<div class="card"><img class="pic" src="${p.img}" alt="${p.name}"><div class="info"><span class="tag">${p.cat}</span><div class="name">${p.name}</div><div class="price">₹${p.price}<span class="old">₹${p.old}</span></div><button class="add" onclick="addCart(${products.indexOf(p)})">Add to Cart</button></div></div>`).join(""):'<div class="empty">No products found.</div>';
 }
 function setCategory(cat,el){
-category=cat;
-document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));el.classList.add("active");
-document.getElementById("title").textContent=cat==="All"?"All Products":cat+" Collection";
-filter();
-document.getElementById("shop").scrollIntoView({behavior:"smooth"});
+ category=cat;
+ document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));el.classList.add("active");
+ document.getElementById("title").textContent=cat==="All"?"All Products":cat+" Collection";
+ filter();
 }
 function filter(){
-const q=document.getElementById("search").value.toLowerCase();
-render(products.filter(p=>(category==="All"||p.cat===category)&&p.name.toLowerCase().includes(q)));
+ const q=document.getElementById("search").value.toLowerCase();
+ render(products.filter(p=>(category==="All"||p.cat===category)&&p.name.toLowerCase().includes(q)));
 }
-function searchProducts(){filter()}
-function addCart(){let n=Number(document.getElementById("count").textContent)+1;document.getElementById("count").textContent=n;alert("Product added to cart!")}
-render(products);
+function addCart(i){
+ const found=cart.find(x=>x.i===i);
+ if(found)found.qty++;else cart.push({i,qty:1});
+ updateCart(); alert(products[i].name+" added to cart!");
+}
+function updateCart(){
+ document.getElementById("count").textContent=cart.reduce((s,x)=>s+x.qty,0);
+ const box=document.getElementById("cartItems");
+ if(!cart.length){box.innerHTML='<div class="empty">Your cart is empty.</div>';document.getElementById("total").textContent="0";return;}
+ let total=0;
+ box.innerHTML=cart.map((x,n)=>{let p=products[x.i];total+=p.price*x.qty;return `<div class="cart-item"><img src="${p.img}"><div class="item-main"><b>${p.name}</b><div>₹${p.price} × ${x.qty}</div><div class="qty"><button onclick="changeQty(${n},-1)">−</button><b>${x.qty}</b><button onclick="changeQty(${n},1)">+</button><button onclick="removeItem(${n})" style="margin-left:8px;background:#ddd;color:#111">Remove</button></div></div></div>`}).join("");
+ document.getElementById("total").textContent=total;
+}
+function changeQty(n,d){cart[n].qty+=d;if(cart[n].qty<=0)cart.splice(n,1);updateCart();}
+function removeItem(n){cart.splice(n,1);updateCart();}
+function openCart(){updateCart();document.getElementById("cartModal").style.display="block";}
+function closeCart(){document.getElementById("cartModal").style.display="none";}
+function placeOrder(){
+ if(!cart.length){alert("Cart empty hai.");return;}
+ const name=document.getElementById("custName").value.trim(),phone=document.getElementById("custPhone").value.trim(),address=document.getElementById("custAddress").value.trim();
+ if(!name||!phone||!address){alert("Please Name, Phone aur Address fill karo.");return;}
+ alert("Order details ready hain. WhatsApp/payment connection next step mein add kiya ja sakta hai.");
+}
+render(products);updateCart();
 </script>
 </body>
 </html>
