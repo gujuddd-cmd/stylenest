@@ -72,18 +72,18 @@ footer{text-align:center;padding:25px;color:#777}
 
 <script>
 const products=[
-{name:"Classic T-Shirt",cat:"Men",price:499,old:699,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80"},
-{name:"Casual Shirt",cat:"Men",price:799,old:999,img:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80"},
-{name:"Denim Jeans",cat:"Men",price:1199,old:1499,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80"},
-{name:"Everyday Hoodie",cat:"Men",price:899,old:1199,img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80"},
-{name:"Everyday Top",cat:"Women",price:599,old:799,img:"https://images.unsplash.com/photo-1564257577054-8c4b5f3d0e9b?auto=format&fit=crop&w=800&q=80"},
-{name:"Elegant Kurti",cat:"Women",price:899,old:1199,img:"https://images.unsplash.com/photo-1583391733956-6c78276477e6?auto=format&fit=crop&w=800&q=80"},
-{name:"Slim Fit Jeans",cat:"Women",price:1099,old:1399,img:"https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?auto=format&fit=crop&w=800&q=80"},
-{name:"Casual Dress",cat:"Women",price:999,old:1299,img:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=80"},
-{name:"Kids T-Shirt",cat:"Kids",price:399,old:549,img:"https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80"},
-{name:"Kids Hoodie",cat:"Kids",price:699,old:899,img:"https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=80"},
-{name:"Kids Dress",cat:"Kids",price:649,old:849,img:"https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80"},
-{name:"Kids Jacket",cat:"Kids",price:799,old:999,img:"https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=800&q=80"}
+{name:"Classic T-Shirt",cat:"Men",price:349,old:499,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80"},
+{name:"Casual Shirt",cat:"Men",price:559,old:799,img:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80"},
+{name:"Denim Jeans",cat:"Men",price:839,old:1199,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80"},
+{name:"Everyday Hoodie",cat:"Men",price:629,old:899,img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80"},
+{name:"Everyday Top",cat:"Women",price:419,old:599,img:"https://images.unsplash.com/photo-1564257577054-8c4b5f3d0e9b?auto=format&fit=crop&w=800&q=80"},
+{name:"Elegant Kurti",cat:"Women",price:629,old:899,img:"https://images.unsplash.com/photo-1583391733956-6c78276477e6?auto=format&fit=crop&w=800&q=80"},
+{name:"Slim Fit Jeans",cat:"Women",price:769,old:1099,img:"https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?auto=format&fit=crop&w=800&q=80"},
+{name:"Casual Dress",cat:"Women",price:699,old:999,img:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=80"},
+{name:"Kids T-Shirt",cat:"Kids",price:279,old:399,img:"https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80"},
+{name:"Kids Hoodie",cat:"Kids",price:489,old:699,img:"https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=80"},
+{name:"Kids Dress",cat:"Kids",price:454,old:649,img:"https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80"},
+{name:"Kids Jacket",cat:"Kids",price:559,old:799,img:"https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=800&q=80"}
 ];
 const WA="917619152451";
 let category="All",cart=JSON.parse(localStorage.getItem("stylenest_cart")||"[]");
@@ -91,7 +91,7 @@ let category="All",cart=JSON.parse(localStorage.getItem("stylenest_cart")||"[]")
 function saveCart(){localStorage.setItem("stylenest_cart",JSON.stringify(cart));}
 function render(list){
  const box=document.getElementById("products");
- box.innerHTML=list.length?list.map(p=>`<div class="card"><img class="pic" src="${p.img}" alt="${p.name}"><div class="info"><span class="tag">${p.cat}</span><div class="name">${p.name}</div><div class="price">₹${p.price}<span class="old">₹${p.old}</span></div><button class="add" onclick="addCart(${products.indexOf(p)})">Add to Cart</button></div></div>`).join(""):'<div class="empty">No products found.</div>';
+ box.innerHTML=list.length?list.map(p=>`<div class="card"><img class="pic" src="${p.img}" alt="${p.name}"><div class="info"><span class="tag">${p.cat}</span><span class="tag" style="background:#111;color:#fff;margin-left:5px">30% OFF</span><div class="name">${p.name}</div><div class="price">₹${p.price}<span class="old">₹${p.old}</span></div><button class="add" onclick="addCart(${products.indexOf(p)})">Add to Cart</button></div></div>`).join(""):'<div class="empty">No products found.</div>';
 }
 function setCategory(cat,el){category=cat;document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));el.classList.add("active");document.getElementById("title").textContent=cat==="All"?"All Products":cat+" Collection";filter();}
 function filter(){const q=document.getElementById("search").value.toLowerCase();render(products.filter(p=>(category==="All"||p.cat===category)&&p.name.toLowerCase().includes(q)));}
